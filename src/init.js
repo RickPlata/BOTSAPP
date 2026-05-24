@@ -1,5 +1,6 @@
 const {Client, LocalAuth, MessageMedia} = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const {replyMsg} = require('./handlers/messageHandler');
 
 // Inicializar el cliente de WhatsApp Web
 const client = new Client({
@@ -28,6 +29,14 @@ client.on('disconnected', reason => {
 });
 
 //Evento mensaje recibido
-client.on('message', message => {})
+client.on('message', message => {
+     const {from, body} = message;
+     let txt = body.normalize("NFD")
+                   .replace(/[\u0300-\u036f]/g, "")
+                   .toLowerCase();
+     console.log(`📩 Mensaje recibido de ${from}: ${txt}`);
+     replyMsg(client, message);
+
+ })
 
 module.exports = client;
