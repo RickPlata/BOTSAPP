@@ -1,6 +1,6 @@
 const {Client, LocalAuth, MessageMedia} = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const {insertEq, insertAd} = require('./src/db');
+const {insertEq, insertAd} = require('./src/api/db');
 
 const report = new Map();
 //var conexion = setInterval(conectar, 2700000);
