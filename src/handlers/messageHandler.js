@@ -9,19 +9,19 @@ const replyMsg = (client, message) => {
      let txt = body.normalize("NFD")
                    .replace(/[\u0300-\u036f]/g, "")
                    .toLowerCase();
-     if (repor.has(from)){
+     
+     let status = report.get(from);
+     let session = {
+          idStatus: 0,
+          name: "",
+          order: "",
+          adress:"",
+          creationDate: new Date(),
+     };
 
-     }else{
-          report.set(from, {
-               idStatus: 0,
-               created_at: new Date(),
-               name: "",
-               order: null,
-               products: "",
-               comments: "",
-               address: ""
-          })
-     }
+     if(!status){
+          report.set(from,session)
+     };
  }
 
 module.exports = {replyMsg};
