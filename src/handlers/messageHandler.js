@@ -1,5 +1,6 @@
 const {sendMedia, sendMessage, sendHorario} = require('./msgFunctions');
 const {insertEq, insertAd} = require('../api/db');
+const {saludo, opt} = require('../misc/answers');
 
 // Map para almacenar sesiones de usuarios
 const report = new Map();
@@ -22,6 +23,13 @@ const replyMsg = (client, message) => {
      if(!status){
           report.set(from,session)
      };
+
+     if (report.get(from).idStatus) = 0  {
+          sendMessage(from, saludo());
+          sendMessage(from, opt)
+     }
+
+
  }
 
 module.exports = {replyMsg};
